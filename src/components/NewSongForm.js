@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const NewSongForm = ({addSong}) => {
     const [title, setTitle] = useState('');
@@ -7,6 +7,8 @@ const NewSongForm = ({addSong}) => {
         addSong(title);
         setTitle('');
     }
+
+
     return (
         <form onSubmit={handleSubmit}>
             <label>Song Name:</label>

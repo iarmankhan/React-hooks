@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import uuid from 'uuid';
 import NewSongForm from './NewSongForm';
 
@@ -11,13 +11,21 @@ const SongList = () => {
     const addSong = title => {
         setSongs([...songs, {title, key: uuid()}])
     };
+
+    const [age, setAge] = useState(20);
+    
+    useEffect(() => {
+        console.log("UseEffect Hook", songs)
+    }, [songs]);
+
     return (
         <div className="song-list">
             <ul>
                 {songs.map(song => <li key={song.id}>{song.title}</li>)}
             </ul>
             <NewSongForm addSong={addSong} />
-        </div>
+            <button onClick={() => setAge(curAge => curAge + 1)}>Add 1 to age: {age}</button>
+        </div> 
     );
 }
  
